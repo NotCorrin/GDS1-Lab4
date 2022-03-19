@@ -5,6 +5,25 @@ using UnityEngine;
 
 public class GameEventsSystem : MonoBehaviour
 {
+    public event Action onGameOver;
+    public void GameOver()
+    {
+        if (onGameOver != null)
+        {
+            onGameOver();
+        }
+    }
+
+
+    public event Action onGameStart;
+    public void GameStart()
+    {
+        if (onGameStart != null)
+        {
+            onGameStart();
+        }
+    }
+
     public event Action onPlayerHit;
     public void PlayerHit()
     {
@@ -47,6 +66,33 @@ public class GameEventsSystem : MonoBehaviour
         if (onGetPickup != null)
         {
             onGetPickup(powerupType);
+        }
+    }
+
+    public event Action<GameManager.PowerUpType> onPickupEnd;
+    public void PickupEnd(GameManager.PowerUpType powerupType)
+    {
+        if (onPickupEnd != null)
+        {
+            onPickupEnd(powerupType);
+        }
+    }
+
+    public event Action onTopWallShrink;
+    public void TopWallShrink()
+    {
+        if (onTopWallShrink != null)
+        {
+            onTopWallShrink();
+        }
+    }
+
+    public event Action onBottomWallShrink;
+    public void BottomWallShrink()
+    {
+        if (onBottomWallShrink != null)
+        {
+            onBottomWallShrink();
         }
     }
 }
