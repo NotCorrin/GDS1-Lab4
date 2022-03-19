@@ -31,4 +31,22 @@ public class GameEventsSystem : MonoBehaviour
             onGeneratorDestroyed(generator);
         }
     }
+
+    public event Action<int, bool> onWallHit;
+    public void GeneratorDestroyed(int wallID, bool isAntiWall)
+    {
+        if (onWallHit != null)
+        {
+            onWallHit(wallID, isAntiWall);
+        }
+    }
+
+    public event Action<GameManager.PowerUpType> onGetPickup;
+    public void GetPickup(GameManager.PowerUpType powerupType)
+    {
+        if (onGetPickup != null)
+        {
+            onGetPickup(powerupType);
+        }
+    }
 }

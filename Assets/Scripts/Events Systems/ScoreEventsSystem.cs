@@ -14,4 +14,13 @@ public class ScoreEventsSystem : MonoBehaviour
             onScoreChanged();
         }
     }
+
+    public event Action onlivesChanged;
+    public void LivesChanged()
+    {
+        if (onlivesChanged != null)
+        {
+            onlivesChanged();
+        }
+    }
 }
