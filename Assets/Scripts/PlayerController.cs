@@ -6,9 +6,14 @@ public class PlayerController : MonoBehaviour
 {
 
     [SerializeField]
-    public float moveSpeedX = 5f;
+    float moveSpeedX = 5f;
     [SerializeField]
-    public float moveSpeedY = 3f;
+    float moveSpeedY = 3f;
+
+    [SerializeField]
+    GameObject bullet;
+    [SerializeField]
+    Transform bulletSpawnpoint;
 
     private bool hasShotBullet;
     private Vector2 movement;
@@ -24,9 +29,17 @@ public class PlayerController : MonoBehaviour
     {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
+
+        if (Input.GetButtonDown("Jump")) {
+
+		}
     }
 
 	private void FixedUpdate() {
         rb.MovePosition(rb.position + new Vector2(movement.x * moveSpeedX, movement.y * moveSpeedY) * Time.fixedDeltaTime);
+	}
+
+    private void Shoot() {
+        Instantiate(bullet, bulletSpawnpoint.position, Quaternion.identity);
 	}
 }
