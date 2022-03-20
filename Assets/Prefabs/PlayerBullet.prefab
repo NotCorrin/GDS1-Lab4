@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7711291524529580521}
   m_Layer: 0
   m_Name: PlayerBullet
-  m_TagString: Untagged
+  m_TagString: PlayerBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85,6 +85,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isAntiWall: 0
   normalSpeed: 1.5
+  controlSpeed: 4.5
 --- !u!1 &4207058707709785096
 GameObject:
   m_ObjectHideFlags: 0
