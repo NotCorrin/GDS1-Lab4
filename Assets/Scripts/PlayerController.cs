@@ -10,13 +10,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     float moveSpeedY = 3f;
 
+    [Space]
+
     [SerializeField]
     GameObject bullet;
     [SerializeField]
     Transform bulletSpawnpoint;
 
-    private bool hasShotBullet;
     private Vector2 movement;
+    
+    [HideInInspector]
+    public bool isBulletAlive;
 
     private Rigidbody2D rb;
 
@@ -30,8 +34,8 @@ public class PlayerController : MonoBehaviour
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
-        if (Input.GetButtonDown("Jump")) {
-
+        if (Input.GetButtonDown("Jump") && isBulletAlive == false) {
+            Shoot();
 		}
     }
 
@@ -40,6 +44,7 @@ public class PlayerController : MonoBehaviour
 	}
 
     private void Shoot() {
+        isBulletAlive = true;
         Instantiate(bullet, bulletSpawnpoint.position, Quaternion.identity);
 	}
 }
