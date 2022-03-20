@@ -36,7 +36,7 @@ public class BulletController : MonoBehaviour
     {
         if(otherTag == "Player")
         {
-            //player health--
+            GameManager.GameEvents.PlayerHit();
         }
     }
 
