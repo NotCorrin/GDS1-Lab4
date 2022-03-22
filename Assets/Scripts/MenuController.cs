@@ -23,10 +23,10 @@ public class MenuController : MonoBehaviour
 
     private ColorState colorState = ColorState.Blue;
 
-    private Color orange = new Color(1, 0.5f, 0);
-    private Color yellow = new Color(1, 1, 0);
-    private Color green = new Color(0, 1, 0);
-    private Color blue = new Color(0, 0, 1);
+    private Color orange = new Color(255 / 255f, 175 / 255f, 64 / 255f);
+    private Color yellow = new Color(255 / 255f, 250 / 255f, 101 / 255f);
+    private Color green = new Color(50 / 255f, 255 / 255f, 126 / 255f);
+    private Color blue = new Color(24 / 255f, 220 / 255f, 255 / 255f);
 
     void Start()
     {
