@@ -61,6 +61,7 @@ public class PlayerController : MonoBehaviour
     private void Shoot() {
         // Spawn a bullet and let everyone know about it
         isBulletAlive = true;
+        AudioManager.instance.Play("PlayerShoot");
         Instantiate(bullet, bulletSpawnpoint.position, Quaternion.identity);
 	}
 

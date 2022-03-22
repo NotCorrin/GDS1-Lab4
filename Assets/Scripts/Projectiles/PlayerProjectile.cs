@@ -49,6 +49,7 @@ public class PlayerProjectile : MonoBehaviour
             return;
 		}
 
+        AudioManager.instance.Play("PlayerBulletImpact");
         pc.isBulletAlive = false;
         pc.controllBullet = false;
         Destroy(gameObject);

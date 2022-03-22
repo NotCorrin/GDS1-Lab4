@@ -33,7 +33,7 @@ public class AudioManager : MonoBehaviour
     }
 
     private void Start() {
-        //Play("background_music");
+        Play("BackgroundHum");
     }
 
     public void Play(string name) {
