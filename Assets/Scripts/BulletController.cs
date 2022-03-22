@@ -37,12 +37,12 @@ public class BulletController : MonoBehaviour
         if(otherTag == "Player")
         {
             GameManager.GameEvents.PlayerHit();
+            Destroy(gameObject);
         }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         UpdateScores(other.tag);
-        Destroy(gameObject);
     }
 }
