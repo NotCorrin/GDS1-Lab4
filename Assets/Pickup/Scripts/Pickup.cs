@@ -30,7 +30,8 @@ public class Pickup : MonoBehaviour
 
     void GetPickup()
     {
-        GameManager.GameEvents.GetPickup((GameManager.PowerUpType)1);
+        GameManager.PowerUpType poweruptype = (GameManager.PowerUpType)Random.Range(0, 4);
+        GameManager.GameEvents.GetPickup(poweruptype);
         Destroy(gameObject);
     }
 }
