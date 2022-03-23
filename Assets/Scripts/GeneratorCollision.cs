@@ -9,6 +9,7 @@ public class GeneratorCollision : MonoBehaviour
 
     [SerializeField]
     private Transform Forcefield;
+    public GameManager.Generator generator;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +21,7 @@ public class GeneratorCollision : MonoBehaviour
     {
         if(collider2D.gameObject.CompareTag("PlayerBullet") && Forcefield)
         {
+            GameManager.GameEvents.GeneratorHit(generator);
             Instantiate(Shield, new Vector3(transform.position.x, Forcefield.position.y), Quaternion.identity);
         }
     }
