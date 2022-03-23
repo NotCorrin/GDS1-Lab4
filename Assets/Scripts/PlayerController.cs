@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour
 
 	private void OnCollisionEnter2D(Collision2D collision) {
 		//Check for border
-        if(collision.transform.tag == "Border") {
+        if(collision.transform.tag == "Border" && GameManager.CurrentPlayerState == GameManager.PlayerState.normal) {
             // Tell the gamemanager
             // Die
             GameManager.GameEvents.PlayerDeath();
