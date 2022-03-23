@@ -18,10 +18,14 @@ public class PlayerProjectile : MonoBehaviour
     private PlayerController pc;
     private Rigidbody2D rb;
 
+    public Animator animator;
+
     void Start()
     {
         pc = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         rb = GetComponent<Rigidbody2D>();
+
+        animator = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Animator>();
     }
 
     void Update()
@@ -47,15 +51,26 @@ public class PlayerProjectile : MonoBehaviour
 	private void OnCollisionEnter2D(Collision2D collision) {
         if(collision.gameObject.tag == "EnemyBullet" || collision.gameObject.tag == "Untagged") {
             return;
-		}
-
-		if (isAntiWall && collision.gameObject.tag == "Shield") {
+		    }
+        
+        if (isAntiWall && collision.gameObject.tag == "Shield") {
             return;
-		}
-    
-    AudioManager.instance.Play("PlayerBulletImpact");
-    pc.isBulletAlive = false;
-    pc.controllBullet = false;
-    Destroy(gameObject);
+        }
+        
+        StartCoroutine(ReloadSprite());
 	}
+
+    IEnumerator ReloadSprite()
+    {
+        animator.SetBool("reload", true);
+
+        yield return new WaitForSeconds(0.2f);
+
+        animator.SetBool("reload", false);
+
+        AudioManager.instance.Play("PlayerBulletImpact");
+        pc.isBulletAlive = false;
+        pc.controllBullet = false;
+        Destroy(gameObject);
+    }
 }
