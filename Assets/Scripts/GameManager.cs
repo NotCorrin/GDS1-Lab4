@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
     static private PlayerState currentPlayerState = PlayerState.normal;
     static public PlayerState CurrentPlayerState
     {
-        get => CurrentPlayerState;
+        get => currentPlayerState;
         private set
         {
             currentPlayerState = value;
@@ -229,7 +229,7 @@ public class GameManager : MonoBehaviour
         GameEvents.onGeneratorDestroyed += OnGeneratorDestoryed;
         GameEvents.onPickupEnd += OnPickupEnd;
         GameEvents.onGetPickup += OnPickupGet;
-        GameEvents.onGameStart += OnGameStart;
+        MenuEvents.onGameStarted += OnGameStart;
         GameEvents.onGameOver += OnGameOver;
         GameEvents.onTopWallShrink += OnTopWallShrink;
         GameEvents.onPlayerDeath += OnPlayerDeath;
@@ -237,12 +237,13 @@ public class GameManager : MonoBehaviour
 
     private void UnsubscribeListeners()
     {
+        Debug.Log("unsubscribe");
         GameEvents.onPlayerHit -= OnPlayerHit;
         GameEvents.onGeneratorHit -= OnGeneratorHit;
         GameEvents.onGeneratorDestroyed -= OnGeneratorDestoryed;
         GameEvents.onPickupEnd -= OnPickupEnd;
         GameEvents.onGetPickup -= OnPickupGet;
-        GameEvents.onGameStart -= OnGameStart;
+        MenuEvents.onGameStarted -= OnGameStart;
         GameEvents.onGameOver -= OnGameOver;
         GameEvents.onTopWallShrink -= OnTopWallShrink;
         GameEvents.onPlayerDeath -= OnPlayerDeath;
@@ -277,7 +278,7 @@ public class GameManager : MonoBehaviour
 
 
             //Not entirely sure if += works properly here
-            if (LeftGeneratorHits < LeftGeneratorMaxHits && RightGeneratorHits < RightGeneratorMaxHits)
+            if (LeftGeneratorHits < LeftGeneratorMaxHits || RightGeneratorHits < RightGeneratorMaxHits)
             {
                 if ((borderTimer += Time.deltaTime) >= 15)
                 {
@@ -291,7 +292,7 @@ public class GameManager : MonoBehaviour
                 if ((borderTimer += Time.deltaTime) >= 2)
                 {
                     BottomBorderMoveCount++;
-                    GameEvents.TopWallShrink();
+                    GameEvents.BottomWallShrink();
                     borderTimer = 0;
                 }
             }
@@ -330,11 +331,12 @@ public class GameManager : MonoBehaviour
         borderTimer = 0;
         TopBorderMoveCount = 0;
         BottomBorderMoveCount = 0;
-        LeftGeneratorHits = 0;
-        RightGeneratorHits = 0;
-        CentreGeneratorHits = 0;
+        LeftGeneratorHits = 16;
+        RightGeneratorHits = 16;
+        CentreGeneratorHits = 16;
         CurrentPlayerState = PlayerState.normal;
         CurrentGameState = GameState.playing;
+        Debug.Log("test");
     }
 
     private void OnGameOver()

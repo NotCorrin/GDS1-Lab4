@@ -13,8 +13,10 @@ public class GeneratorCollision : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
+
+
 
     // Update is called once per frame
     void OnCollisionEnter2D(Collision2D collider2D)

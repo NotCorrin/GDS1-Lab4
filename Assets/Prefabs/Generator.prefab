@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1060055192}
   - component: {fileID: 1163607071049033633}
   - component: {fileID: 5661693109173862042}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Generator
   m_TagString: KillBullet
   m_Icon: {fileID: 0}
@@ -145,6 +145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Shield: {fileID: 7240591295372218799, guid: a0e89b1d50f902c45bc257f8189af150, type: 3}
   Forcefield: {fileID: 0}
+  generator: 0
 --- !u!1 &7111447925255082861
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,7 +155,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7111447925255082860}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Emitter
   m_TagString: Untagged
   m_Icon: {fileID: 0}

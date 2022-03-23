@@ -42,7 +42,7 @@ public class BulletController : MonoBehaviour
 
     protected virtual void UpdateScores(string otherTag)
     {
-        if(otherTag == "Player")
+        if(otherTag.Equals("Player"))
         {
             //GameManager.GameEvents.PlayerHit();
             Destroy(gameObject);
