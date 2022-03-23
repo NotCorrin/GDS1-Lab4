@@ -61,16 +61,24 @@ public class PlayerController : MonoBehaviour
     private void Shoot() {
         // Spawn a bullet and let everyone know about it
         isBulletAlive = true;
-        Instantiate(bullet, bulletSpawnpoint.position, Quaternion.identity);
-	}
+        GameObject bulletGO = Instantiate(bullet, bulletSpawnpoint.position, Quaternion.identity);
+        if (GameManager.IsAntiWall) {
+            bulletGO.GetComponent<PlayerProjectile>().isAntiWall = true;
+            GameManager.GameEvents.PickupEnd(GameManager.PowerUpType.antiwall);
+        }
+    }
 
 	private void OnCollisionEnter2D(Collision2D collision) {
 		//Check for border
         if(collision.transform.tag == "Border") {
             // Tell the gamemanager
             // Die
+            GameManager.GameEvents.GameOver();
 		}
 
 		//Check for enemy bullet
+        if(collision.transform.tag == "EnemyBullet") {
+            GameManager.GameEvents.PlayerHit();
+		}
 	}
 }
