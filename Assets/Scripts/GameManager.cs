@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     }
 
     static private float invulTimer;
-    private static float invulDuration = 3;
+    static private float invulDuration = 3;
 
     static private bool isAntiWall;
     static public bool IsAntiWall
@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
     }
 
     static private float speedTimer;
-    private static float speedDuration = 3;
+    static private float speedDuration = 3;
 
     static private bool isGunUp;
     static public bool IsGunUp
@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
     }
 
     static private float gunUpTimer;
-    static private float gunUpDuration;
+    static private float gunUpDuration = 3;
 
     static public GameEventsSystem GameEvents = new GameEventsSystem();
     static public MenuEventsSystem MenuEvents = new MenuEventsSystem();
@@ -74,13 +74,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    static private PlayerState currentPlayerState;
+    static private PlayerState currentPlayerState = PlayerState.normal;
     static public PlayerState CurrentPlayerState
     {
         get => CurrentPlayerState;
         private set
         {
-            CurrentPlayerState = value;
+            currentPlayerState = value;
         }
     }
 
@@ -96,7 +96,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    [SerializeField] static private int leftGeneratorMaxHits = 20;
+    static private int leftGeneratorMaxHits = 20;
     static public int LeftGeneratorMaxHits
     {
         get => leftGeneratorMaxHits;
@@ -113,7 +113,7 @@ public class GameManager : MonoBehaviour
     }
 
 
-    [SerializeField] static private int rightGeneratorMaxHits = 20;
+    static private int rightGeneratorMaxHits = 20;
     static public int RightGeneratorMaxHits
     {
         get => rightGeneratorMaxHits;
@@ -129,7 +129,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    [SerializeField] static private int centreGeneratorMaxHits = 20;
+    static private int centreGeneratorMaxHits = 20;
     static public int CentreGeneratorMaxHits
     {
         get => centreGeneratorMaxHits;
