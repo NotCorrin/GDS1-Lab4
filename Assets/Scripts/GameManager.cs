@@ -10,15 +10,6 @@ public class GameManager : MonoBehaviour
     public enum PlayerState { normal, dead }
 
     // Powerups bools
-    static private bool powerupExists;
-    static public bool PowerupExists
-    {
-        get => powerupExists;
-        private set
-        {
-            powerupExists = value;
-        }
-    }
 
     static private bool isInvul;
     static public bool IsInvul
@@ -232,6 +223,7 @@ public class GameManager : MonoBehaviour
 
     private void SubscribeListeners()
     {
+        Debug.Log("subscribe");
         GameEvents.onPlayerHit += OnPlayerHit;
         GameEvents.onGeneratorHit += OnGeneratorHit;
         GameEvents.onGeneratorDestroyed += OnGeneratorDestoryed;
@@ -376,7 +368,7 @@ public class GameManager : MonoBehaviour
         switch (powerup)
         {
             case PowerUpType.antiwall:
-                IsAntiWall = true;
+                IsAntiWall = false;
                 break;
             case PowerUpType.invul:
                 IsInvul = false;

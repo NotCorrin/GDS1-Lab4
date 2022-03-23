@@ -9,7 +9,7 @@ public class Pickup : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        RandomPowerup = Random.Range(0, 4);
+        //RandomPowerup = Random.Range(10, 21);
         //RandomisePowerup();
         //GameManager.GameEvents.GetPickup += GetPickup();
     }
@@ -30,8 +30,10 @@ public class Pickup : MonoBehaviour
 
     void GetPickup()
     {
-        GameManager.PowerUpType poweruptype = (GameManager.PowerUpType)Random.Range(0, 4);
-        GameManager.GameEvents.GetPickup(poweruptype);
+        /*GameManager.PowerUpType poweruptype = (GameManager.PowerUpType)Random.Range(0, 4);
+        Debug.Log(poweruptype);*/
+        AudioManager.instance.Play("PickupCollect");
+        GameManager.GameEvents.GetPickup(GameManager.PowerUpType.antiwall);
         Destroy(gameObject);
     }
 }

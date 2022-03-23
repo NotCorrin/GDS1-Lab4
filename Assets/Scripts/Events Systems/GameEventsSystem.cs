@@ -72,10 +72,8 @@ public class GameEventsSystem : MonoBehaviour
     public event Action<GameManager.PowerUpType> onGetPickup;
     public void GetPickup(GameManager.PowerUpType powerupType)
     {
-        Debug.Log("hi");
         if (onGetPickup != null)
         {
-            Debug.Log("picked up");
             onGetPickup(powerupType);
         }
     }

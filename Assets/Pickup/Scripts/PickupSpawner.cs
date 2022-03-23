@@ -21,7 +21,7 @@ public class PickupSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameObject.Find("Pickup(Clone)") == null /*player isnt powered up*/)
+        if (GameObject.Find("Pickup(Clone)") == null && !GameManager.IsAntiWall /*player isnt powered up*/)
         {
             Timer += Time.deltaTime;
         }
@@ -36,6 +36,7 @@ public class PickupSpawner : MonoBehaviour
 
     void Spawn()
     {
+        AudioManager.instance.Play("PickupSpawn");
         Vector2 rndPoint2D = RandomPointInBounds(zone.bounds, 1f);
         Vector2 rndPointInside = zone.ClosestPoint(new Vector2(rndPoint2D.x, rndPoint2D.y));
         if (rndPointInside.x == rndPoint2D.x && rndPointInside.y == rndPoint2D.y)
