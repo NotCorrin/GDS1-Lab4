@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public enum GameState { menu, playing };
     public enum Generator { left, centre, right};
-    public enum PowerUpType { antiwall, invul, speed, gunup };
+    public enum PowerUpType { antiwall, speed, invul, gunup };
     public enum PlayerState { normal, dead }
 
     // Powerups bools
@@ -223,6 +223,7 @@ public class GameManager : MonoBehaviour
 
     private void SubscribeListeners()
     {
+        Debug.Log("subscribe");
         GameEvents.onPlayerHit += OnPlayerHit;
         GameEvents.onGeneratorHit += OnGeneratorHit;
         GameEvents.onGeneratorDestroyed += OnGeneratorDestoryed;
@@ -367,7 +368,7 @@ public class GameManager : MonoBehaviour
         switch (powerup)
         {
             case PowerUpType.antiwall:
-                IsAntiWall = true;
+                IsAntiWall = false;
                 break;
             case PowerUpType.invul:
                 IsInvul = false;
@@ -387,18 +388,22 @@ public class GameManager : MonoBehaviour
         {
             case PowerUpType.antiwall:
                 IsAntiWall = true;
+                Debug.Log("antiwall");
                 break;
             case PowerUpType.invul:
                 IsInvul = true;
                 gunUpTimer = 0;
+                Debug.Log("invul");
                 break;
             case PowerUpType.speed:
                 IsSpeedUp = true;
                 speedTimer = 0;
+                Debug.Log("speed");
                 break;
             case PowerUpType.gunup:
                 IsGunUp = true;
                 gunUpTimer = 0;
+                Debug.Log("gunup");
                 break;
         }
     }
