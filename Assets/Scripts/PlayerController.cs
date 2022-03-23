@@ -72,14 +72,14 @@ public class PlayerController : MonoBehaviour
 
 	private void OnCollisionEnter2D(Collision2D collision) {
 		//Check for border
-        if(collision.transform.tag == "Border") {
+        if(collision.transform.CompareTag("Border")) {
             // Tell the gamemanager
             // Die
             GameManager.GameEvents.PlayerDeath();
 		}
 
 		//Check for enemy bullet
-        if(collision.transform.tag == "EnemyBullet") {
+        if(collision.transform.CompareTag("EnemyBullet")) {
             GameManager.GameEvents.PlayerHit();
 		}
 	}

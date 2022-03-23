@@ -1697,10 +1697,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: BorderManager
       objectReference: {fileID: 0}
-    - target: {fileID: 8860406144299145387, guid: ef99e69609b250c458a8e13eaf060383, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 8860406144299145389, guid: ef99e69609b250c458a8e13eaf060383, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1743,22 +1739,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8860406144299145389, guid: ef99e69609b250c458a8e13eaf060383, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8860406145665359924, guid: ef99e69609b250c458a8e13eaf060383, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8860406145665359926, guid: ef99e69609b250c458a8e13eaf060383, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8860406145701322279, guid: ef99e69609b250c458a8e13eaf060383, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8860406145701322281, guid: ef99e69609b250c458a8e13eaf060383, type: 3}
-      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2092,7 +2072,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7387221300207833133, guid: 304dcc6a22050034da505d6f984e6561, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7387221300207833133, guid: 304dcc6a22050034da505d6f984e6561, type: 3}
       propertyPath: m_LocalPosition.x
