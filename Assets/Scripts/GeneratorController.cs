@@ -37,16 +37,15 @@ public class GeneratorController : MonoBehaviour
 
     void GeneratorDestroyed(GameManager.Generator generation)
     {
-        Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
         switch (generation)
         {
             case GameManager.Generator.left:
                 transform.GetChild(0).gameObject.SetActive(false);
-                if(!transform.GetChild(1).gameObject.activeSelf) transform.GetChild(2).gameObject.SetActive(true);
+                if(!transform.GetChild(1).gameObject.activeSelf) {transform.GetChild(2).gameObject.SetActive(true); GeneratorToShoot = 2;}
                 break;
             case GameManager.Generator.right:
                 transform.GetChild(1).gameObject.SetActive(false);
-                if(!transform.GetChild(0).gameObject.activeSelf) transform.GetChild(2).gameObject.SetActive(true);
+                if(!transform.GetChild(0).gameObject.activeSelf) {transform.GetChild(2).gameObject.SetActive(true); GeneratorToShoot = 2;}
                 break;
             default:
             break;

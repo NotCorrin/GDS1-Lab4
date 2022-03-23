@@ -336,7 +336,6 @@ public class GameManager : MonoBehaviour
         CentreGeneratorHits = 18;
         CurrentPlayerState = PlayerState.normal;
         CurrentGameState = GameState.playing;
-        Debug.Log("test");
     }
 
     private void OnGameOver()
@@ -443,7 +442,6 @@ public class GameManager : MonoBehaviour
 
             case Generator.centre:
                 CentreGeneratorHits++;
-
                 if (CentreGeneratorHits < CentreGeneratorMaxHits) Score += 10 * CentreGeneratorHits;
                 else GameEvents.GeneratorDestroyed(Generator.centre);
                 break;
