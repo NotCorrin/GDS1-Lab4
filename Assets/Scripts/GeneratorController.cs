@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GeneratorController : MonoBehaviour
 {
-    private Transform Emitter;
+    public Transform[] Emitter;
 
     private float counter;
 
@@ -13,11 +13,17 @@ public class GeneratorController : MonoBehaviour
 
     [SerializeField]
     private GameObject Bullet;
+
+    private int GeneratorToShoot;
     
-    // Start is called before the first frame update
     void Awake()
     {
-        Emitter = transform.GetChild(0);
+        float screenRatio = (float)Screen.width / (float)Screen.height;
+        float Ortho = Camera.main.orthographicSize * 2;
+
+        BoxCollider2D box = GetComponent<BoxCollider2D>();
+        box.size = new Vector2(Ortho * screenRatio * .5f, Ortho);
+        box.offset = new Vector2(Ortho * screenRatio * .25f, 0);
     }
 
     // Update is called once per frame
@@ -26,8 +32,23 @@ public class GeneratorController : MonoBehaviour
         counter += Time.deltaTime;
         if(counter >= emitSpeed)
         {
-            Instantiate(Bullet, Emitter.position, Emitter.rotation);
+            Instantiate(Bullet, Emitter[GeneratorToShoot].position, Emitter[GeneratorToShoot].rotation);
             counter = 0;
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collider2D)
+    {
+        if(collider2D.CompareTag("Player") && GeneratorToShoot != 2)
+        {
+            GeneratorToShoot = 1;
+        }
+    }
+    void OnTriggerExit2D(Collider2D collider2D)
+    {
+        if(collider2D.CompareTag("Player") && GeneratorToShoot != 2)
+        {
+            GeneratorToShoot = 0;
         }
     }
 }
