@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public enum GameState { menu, playing };
     public enum Generator { left, centre, right};
-    public enum PowerUpType { antiwall, invul, speed, gunup };
+    public enum PowerUpType { antiwall, speed, invul, gunup };
     public enum PlayerState { normal, dead }
 
     // Powerups bools

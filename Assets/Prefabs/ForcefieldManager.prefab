@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8860406144299145388}
   m_Layer: 0
   m_Name: ForcefieldManager
-  m_TagString: Untagged
+  m_TagString: Border
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -61,7 +61,7 @@ GameObject:
   - component: {fileID: 8860406145665359926}
   m_Layer: 0
   m_Name: border
-  m_TagString: Untagged
+  m_TagString: Border
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -170,7 +170,7 @@ GameObject:
   - component: {fileID: 8860406145701322281}
   m_Layer: 0
   m_Name: border (1)
-  m_TagString: Untagged
+  m_TagString: Border
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

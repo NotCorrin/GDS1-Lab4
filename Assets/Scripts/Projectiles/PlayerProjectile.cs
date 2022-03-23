@@ -44,12 +44,12 @@ public class PlayerProjectile : MonoBehaviour
         rb.MovePosition(rb.position + new Vector2(movement.x * controlSpeed, ((movement.y * controlSpeed * 0.7f) + normalSpeed)) * Time.fixedDeltaTime);
 	}
 
-	private void OnTriggerEnter2D(Collider2D collision) {
-        if(collision.tag == "Player" || collision.tag == "Border" || collision.tag == "EnemyBullet" || collision.tag == "Untagged") {
+	private void OnCollisionEnter2D(Collision2D collision) {
+        if(collision.gameObject.tag == "EnemyBullet" || collision.gameObject.tag == "Untagged") {
             return;
 		}
 
-		if (isAntiWall && collision.tag == "Shield") {
+		if (isAntiWall && collision.gameObject.tag == "Shield") {
             return;
 		}
     
