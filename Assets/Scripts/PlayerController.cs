@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour
         if(collision.transform.tag == "Border") {
             // Tell the gamemanager
             // Die
-            GameManager.GameEvents.GameOver();
+            GameManager.GameEvents.PlayerDeath();
 		}
 
 		//Check for enemy bullet
