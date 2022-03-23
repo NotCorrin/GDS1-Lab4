@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ShieldController : MonoBehaviour
 {
+    public float moveSpeed = 20;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +14,6 @@ public class ShieldController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        transform.position += Vector3.right * moveSpeed * Time.deltaTime;
     }
 }
