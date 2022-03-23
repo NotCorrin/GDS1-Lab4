@@ -49,9 +49,13 @@ public class PlayerProjectile : MonoBehaviour
             return;
 		}
 
-        AudioManager.instance.Play("PlayerBulletImpact");
-        pc.isBulletAlive = false;
-        pc.controllBullet = false;
-        Destroy(gameObject);
+		if (isAntiWall && collision.tag == "Shield") {
+            return;
+		}
+    
+    AudioManager.instance.Play("PlayerBulletImpact");
+    pc.isBulletAlive = false;
+    pc.controllBullet = false;
+    Destroy(gameObject);
 	}
 }
