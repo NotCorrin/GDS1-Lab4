@@ -218,7 +218,7 @@ public class GameManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        UnsubscribeListeners();
+        //UnsubscribeListeners();
     }
 
     private void SubscribeListeners()
