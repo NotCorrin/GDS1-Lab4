@@ -33,6 +33,15 @@ public class GameEventsSystem : MonoBehaviour
         }
     }
 
+    public event Action onPlayerDeath;
+    public void PlayerDeath()
+    {
+        if (onPlayerDeath != null)
+        {
+            onPlayerHit();
+        }
+    }
+
     public event Action<GameManager.Generator> onGeneratorHit;
     public void GeneratorHit( GameManager.Generator generator)
     {
