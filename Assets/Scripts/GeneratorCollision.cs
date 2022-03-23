@@ -21,10 +21,10 @@ public class GeneratorCollision : MonoBehaviour
     // Update is called once per frame
     void OnCollisionEnter2D(Collision2D collider2D)
     {
-        if(collider2D.gameObject.CompareTag("PlayerBullet") && Forcefield)
+        if(collider2D.gameObject.CompareTag("PlayerBullet"))
         {
             GameManager.GameEvents.GeneratorHit(generator);
-            Instantiate(Shield, new Vector3(transform.position.x, Forcefield.position.y), Quaternion.identity);
+            if(Forcefield) Instantiate(Shield, new Vector3(transform.position.x, Forcefield.position.y), Quaternion.identity);
         }
     }
 }
