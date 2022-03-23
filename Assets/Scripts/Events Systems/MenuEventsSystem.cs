@@ -5,19 +5,19 @@ using UnityEngine;
 
 public class MenuEventsSystem : MonoBehaviour
 {
-    public event Action onGammeStarted;
+    public event Action onGameStarted;
     public void GameStart()
     {
-        if (onGammeStarted != null)
+        if (onGameStarted != null)
         {
-            onGammeStarted();
+            onGameStarted();
         }
     }
 
     public event Action onGameQuit;
     public void GameQuit()
     {
-        if (onGammeStarted != null)
+        if (onGameStarted != null)
         {
             onGameQuit();
         }
@@ -26,9 +26,18 @@ public class MenuEventsSystem : MonoBehaviour
     public event Action onReturnToMenu;
     public void ReturnToMenu()
     {
-        if (onGammeStarted != null)
+        if (onGameStarted != null)
         {
             onReturnToMenu();
+        }
+    }
+
+    public event Action onColorShift;
+    public void ColorShift()
+    {
+        if (onColorShift != null)
+        {
+            onColorShift();
         }
     }
 }
