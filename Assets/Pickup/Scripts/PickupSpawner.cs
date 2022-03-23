@@ -15,13 +15,13 @@ public class PickupSpawner : MonoBehaviour
     void Start()
     {
         zone = GetComponent<BoxCollider2D>();
-        PickupSpawnTime = Random.Range(1, 3);
+        PickupSpawnTime = Random.Range(10, 21);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (GameObject.Find("Pickup(Clone)") == null && !GameManager.IsAntiWall /*player isnt powered up*/)
+        if (GameObject.Find("Pickup(Clone)") == null && !GameManager.IsAntiWall && !GameManager.IsSpeedUp /*player isnt powered up*/)
         {
             Timer += Time.deltaTime;
         }

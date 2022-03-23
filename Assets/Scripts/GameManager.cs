@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     }
 
     static private float invulTimer;
-    [SerializeField] static private float invulDuration;
+    private static float invulDuration = 3;
 
     static private bool isAntiWall;
     static public bool IsAntiWall
@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
     }
 
     static private float speedTimer;
-    [SerializeField] static private float speedDuration;
+    private static float speedDuration = 3;
 
     static private bool isGunUp;
     static public bool IsGunUp
@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
     }
 
     static private float gunUpTimer;
-    [SerializeField] static private float gunUpDuration;
+    static private float gunUpDuration;
 
     static public GameEventsSystem GameEvents = new GameEventsSystem();
     static public MenuEventsSystem MenuEvents = new MenuEventsSystem();
