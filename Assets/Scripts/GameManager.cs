@@ -96,7 +96,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    [SerializeField] static private int leftGeneratorMaxHits;
+    [SerializeField] static private int leftGeneratorMaxHits = 20;
     static public int LeftGeneratorMaxHits
     {
         get => leftGeneratorMaxHits;
@@ -113,7 +113,7 @@ public class GameManager : MonoBehaviour
     }
 
 
-    [SerializeField] static private int rightGeneratorMaxHits;
+    [SerializeField] static private int rightGeneratorMaxHits = 20;
     static public int RightGeneratorMaxHits
     {
         get => rightGeneratorMaxHits;
@@ -129,7 +129,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    [SerializeField] static private int centreGeneratorMaxHits;
+    [SerializeField] static private int centreGeneratorMaxHits = 20;
     static public int CentreGeneratorMaxHits
     {
         get => centreGeneratorMaxHits;
@@ -325,7 +325,7 @@ public class GameManager : MonoBehaviour
         Score = 0;
         livesTimer = 0;
         deathTimer = 0;
-        Lives = 4;
+        Lives = 6;
         borderTimer = 0;
         TopBorderMoveCount = 0;
         BottomBorderMoveCount = 0;
