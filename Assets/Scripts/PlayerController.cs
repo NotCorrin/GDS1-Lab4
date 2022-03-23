@@ -28,10 +28,14 @@ public class PlayerController : MonoBehaviour
 
     private float speedMultiplier;
 
+    public Animator animator;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         speedMultiplier = 1.0f;
+
+        animator = GetComponentInChildren<Animator>();
     }
 
     void Update()
@@ -91,6 +95,31 @@ public class PlayerController : MonoBehaviour
 		//Check for enemy bullet
         if(collision.transform.CompareTag("EnemyBullet")) {
             GameManager.GameEvents.PlayerHit();
+
+            if (GameManager.Lives == 5)
+            {
+                animator.SetBool("green", false);
+                animator.SetBool("blue", true);
+            }
+            else if (GameManager.Lives == 4 || GameManager.Lives == 3)
+            {
+                animator.SetBool("blue", false);
+                animator.SetBool("yellow", true);
+            }
+            else if (GameManager.Lives == 2)
+            {
+                animator.SetBool("yellow", false);
+                animator.SetBool("orange", true);
+            }
+            else if (GameManager.Lives == 1)
+            {
+                animator.SetBool("orange", false);
+                animator.SetBool("red", true);
+            }
+            else if (GameManager.Lives == 0)
+            {
+                animator.SetBool("death", true);
+            }
 		}
 	}
 }
