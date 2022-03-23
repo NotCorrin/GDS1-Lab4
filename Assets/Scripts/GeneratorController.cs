@@ -15,7 +15,7 @@ public class GeneratorController : MonoBehaviour
     private GameObject Bullet;
 
     private int GeneratorToShoot;
-        
+
     void Awake()
     {
         float screenRatio = (float)Screen.width / (float)Screen.height;
@@ -42,11 +42,11 @@ public class GeneratorController : MonoBehaviour
         {
             case GameManager.Generator.left:
                 transform.GetChild(0).gameObject.SetActive(false);
-                if(transform.GetChild(1).gameObject.activeSelf) transform.GetChild(2).gameObject.SetActive(true);
+                if(!transform.GetChild(1).gameObject.activeSelf) transform.GetChild(2).gameObject.SetActive(true);
                 break;
             case GameManager.Generator.right:
                 transform.GetChild(1).gameObject.SetActive(false);
-                if(transform.GetChild(0).gameObject.activeSelf) transform.GetChild(2).gameObject.SetActive(true);
+                if(!transform.GetChild(0).gameObject.activeSelf) transform.GetChild(2).gameObject.SetActive(true);
                 break;
             default:
             break;
