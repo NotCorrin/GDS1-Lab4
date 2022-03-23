@@ -36,7 +36,7 @@ public class BulletController : MonoBehaviour
     {
         if(otherTag == "Player")
         {
-            GameManager.GameEvents.PlayerHit();
+            //GameManager.GameEvents.PlayerHit();
             Destroy(gameObject);
         }
     }

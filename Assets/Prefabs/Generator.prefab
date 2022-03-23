@@ -97,8 +97,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faaef1340a862934c88157db3e23994d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Forcefield: {fileID: 0}
   emitSpeed: 4
   Bullet: {fileID: 3167432853258077346, guid: 8631e797b50c40348a3aadca965a6ec3, type: 3}
+  Shield: {fileID: 7240591295372218799, guid: a0e89b1d50f902c45bc257f8189af150, type: 3}
 --- !u!95 &1060055192
 Animator:
   serializedVersion: 3
