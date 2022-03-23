@@ -38,7 +38,7 @@ public class GameEventsSystem : MonoBehaviour
     {
         if (onPlayerDeath != null)
         {
-            onPlayerHit();
+            onPlayerDeath();
         }
     }
 
