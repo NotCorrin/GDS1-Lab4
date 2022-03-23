@@ -15,7 +15,7 @@ public class GeneratorController : MonoBehaviour
     private GameObject Bullet;
 
     private int GeneratorToShoot;
-    
+        
     void Awake()
     {
         float screenRatio = (float)Screen.width / (float)Screen.height;
@@ -24,6 +24,33 @@ public class GeneratorController : MonoBehaviour
         BoxCollider2D box = GetComponent<BoxCollider2D>();
         box.size = new Vector2(Ortho * screenRatio * .5f, Ortho);
         box.offset = new Vector2(Ortho * screenRatio * .25f, 0);
+    }
+    void OnEnable()
+    {
+        GameManager.GameEvents.onGeneratorDestroyed += GeneratorDestroyed;
+    }
+
+    void OnDisable()
+    {
+        GameManager.GameEvents.onGeneratorDestroyed -= GeneratorDestroyed;
+    }
+
+    void GeneratorDestroyed(GameManager.Generator generation)
+    {
+        Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+        switch (generation)
+        {
+            case GameManager.Generator.left:
+                transform.GetChild(0).gameObject.SetActive(false);
+                if(transform.GetChild(1).gameObject.activeSelf) transform.GetChild(2).gameObject.SetActive(true);
+                break;
+            case GameManager.Generator.right:
+                transform.GetChild(1).gameObject.SetActive(false);
+                if(transform.GetChild(0).gameObject.activeSelf) transform.GetChild(2).gameObject.SetActive(true);
+                break;
+            default:
+            break;
+        }
     }
 
     // Update is called once per frame

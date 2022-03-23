@@ -7,7 +7,7 @@ public class BorderController : MonoBehaviour
     public Transform topBorder;
     public Transform bottomBorder;
     public float moveSpeed;
-    private float bottomBorderMoveSpeed;
+    public float bottomBorderMoveSpeed;
     // Start is called before the first frame update
     void OnEnable()
     {
