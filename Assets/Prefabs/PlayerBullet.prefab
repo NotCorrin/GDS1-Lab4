@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2718085420486374982}
   - component: {fileID: 1888677607646414083}
   - component: {fileID: 7711291524529580521}
+  - component: {fileID: -4017752936218574071}
   m_Layer: 8
   m_Name: PlayerBullet
   m_TagString: PlayerBullet
@@ -86,9 +87,26 @@ MonoBehaviour:
   isAntiWall: 0
   normalSpeed: 2
   controlSpeed: 4.5
-  sp: {fileID: 0}
-  sprite: {fileID: 0}
-  reloadSprite: {fileID: 21300000, guid: cbcca3eaf60b7dd468eee3368fb1a68f, type: 3}
+  animator: {fileID: 0}
+--- !u!95 &-4017752936218574071
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2997975281870515252}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 470d811eab24b8249b5a21e8c042add8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4207058707709785096
 GameObject:
   m_ObjectHideFlags: 0
