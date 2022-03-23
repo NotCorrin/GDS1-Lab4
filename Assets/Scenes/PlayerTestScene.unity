@@ -3457,12 +3457,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4526880986312789157, guid: 4b2c74be2c96bdc4891afbebec2bf745, type: 3}
-      propertyPath: generator
-      value: 2
+    - target: {fileID: 1364618804762783409, guid: 4b2c74be2c96bdc4891afbebec2bf745, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4526880986894427954, guid: 4b2c74be2c96bdc4891afbebec2bf745, type: 3}
-      propertyPath: generator
+    - target: {fileID: 6945992980580335113, guid: 4b2c74be2c96bdc4891afbebec2bf745, type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8088721835455175368, guid: 4b2c74be2c96bdc4891afbebec2bf745, type: 3}

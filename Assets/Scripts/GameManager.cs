@@ -331,12 +331,11 @@ public class GameManager : MonoBehaviour
         borderTimer = 0;
         TopBorderMoveCount = 0;
         BottomBorderMoveCount = 0;
-        LeftGeneratorHits = 16;
-        RightGeneratorHits = 16;
-        CentreGeneratorHits = 16;
+        LeftGeneratorHits = 18;
+        RightGeneratorHits = 18;
+        CentreGeneratorHits = 18;
         CurrentPlayerState = PlayerState.normal;
         CurrentGameState = GameState.playing;
-        Debug.Log("test");
     }
 
     private void OnGameOver()
@@ -351,6 +350,7 @@ public class GameManager : MonoBehaviour
 
     private void OnPlayerHit()
     {
+        AudioManager.instance.Play("PlayerBulletImpact");
         livesTimer = 0;
 
         if (Lives == 0)
@@ -366,6 +366,7 @@ public class GameManager : MonoBehaviour
 
     private void OnPlayerDeath()
     {
+        AudioManager.instance.Play("PlayerExplode");
         CurrentPlayerState = PlayerState.dead;
     }
 
@@ -421,16 +422,16 @@ public class GameManager : MonoBehaviour
 
     private void OnGeneratorHit( Generator generator )
     {
+        AudioManager.instance.Play("GeneratorHit");
 
-
-        switch(generator)
+        switch (generator)
         {
             case Generator.left:
                 LeftGeneratorHits++;
                 borderTimer = 0;
 
                 if (LeftGeneratorHits < LeftGeneratorMaxHits) Score += 10 * LeftGeneratorHits;
-                else OnGeneratorDestoryed(Generator.left);
+                else GameEvents.GeneratorDestroyed(Generator.left);
                 break;
 
             case Generator.right:
@@ -438,20 +439,20 @@ public class GameManager : MonoBehaviour
                 borderTimer = 0;
 
                 if (RightGeneratorHits < RightGeneratorMaxHits) Score += 10 * RightGeneratorHits;
-                else OnGeneratorDestoryed(Generator.right);
+                else GameEvents.GeneratorDestroyed(Generator.right);
                 break;
 
             case Generator.centre:
                 CentreGeneratorHits++;
-
                 if (CentreGeneratorHits < CentreGeneratorMaxHits) Score += 10 * CentreGeneratorHits;
-                else OnGeneratorDestoryed(Generator.centre);
+                else GameEvents.GeneratorDestroyed(Generator.centre);
                 break;
         }
     }
 
     private void OnGeneratorDestoryed(Generator generator)
     {
+        AudioManager.instance.Play("GeneratorExplode");
         switch (generator)
         {
             case Generator.left:

@@ -43,8 +43,9 @@ public class GameEventsSystem : MonoBehaviour
     }
 
     public event Action<GameManager.Generator> onGeneratorHit;
-    public void GeneratorHit( GameManager.Generator generator)
+    public void GeneratorHit(GameManager.Generator generator)
     {
+        Debug.Log("Hit " + generator.ToString());
         if (onGeneratorHit != null)
         {
             onGeneratorHit(generator);
