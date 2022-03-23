@@ -231,6 +231,7 @@ public class GameManager : MonoBehaviour
         GameEvents.onGetPickup += OnPickupGet;
         MenuEvents.onGameStarted += OnGameStart;
         GameEvents.onGameOver += OnGameOver;
+        GameEvents.onGameWin += OnGameOver;
         GameEvents.onTopWallShrink += OnTopWallShrink;
         GameEvents.onPlayerDeath += OnPlayerDeath;
     }
@@ -245,6 +246,7 @@ public class GameManager : MonoBehaviour
         GameEvents.onGetPickup -= OnPickupGet;
         MenuEvents.onGameStarted -= OnGameStart;
         GameEvents.onGameOver -= OnGameOver;
+        GameEvents.onGameWin -= OnGameOver;
         GameEvents.onTopWallShrink -= OnTopWallShrink;
         GameEvents.onPlayerDeath -= OnPlayerDeath;
     }
@@ -331,9 +333,9 @@ public class GameManager : MonoBehaviour
         borderTimer = 0;
         TopBorderMoveCount = 0;
         BottomBorderMoveCount = 0;
-        LeftGeneratorHits = 18;
-        RightGeneratorHits = 18;
-        CentreGeneratorHits = 18;
+        LeftGeneratorHits = 0;
+        RightGeneratorHits = 0;
+        CentreGeneratorHits = 0;
         CurrentPlayerState = PlayerState.normal;
         CurrentGameState = GameState.playing;
     }
@@ -463,6 +465,7 @@ public class GameManager : MonoBehaviour
                 break;
             case Generator.centre:
                 Score += 5000;
+                GameEvents.GameWin();
                 break;
         }
     }
