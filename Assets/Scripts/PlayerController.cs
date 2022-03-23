@@ -38,6 +38,26 @@ public class PlayerController : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
     }
 
+    private void OnEnable()
+    {
+        SubscribeListeners();
+    }
+
+    private void OnDisable()
+    {
+        UnsubscribeListeners();
+    }
+
+    void SubscribeListeners()
+    {
+        GameManager.GameEvents.onPlayerDeath += OnPlaerDeath;
+    }
+    
+    void UnsubscribeListeners()
+    {
+        GameManager.GameEvents.onPlayerDeath -= OnPlaerDeath;
+    }
+
     void Update()
     {
         // If there is a bullet active and you press spacebar
@@ -49,10 +69,18 @@ public class PlayerController : MonoBehaviour
 		}
 
         controllBullet = false;
-        
-        // Move the ship
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
+
+        if (GameManager.CurrentPlayerState == GameManager.PlayerState.normal)
+        {
+            // Move the ship
+            movement.x = Input.GetAxisRaw("Horizontal");
+            movement.y = Input.GetAxisRaw("Vertical");
+        }
+        else
+        {
+            movement.x = 0;
+            movement.y = 0;
+        }
 
         // Shoot a bullet
         if (Input.GetButtonDown("Jump") && isBulletAlive == false) {
@@ -116,10 +144,11 @@ public class PlayerController : MonoBehaviour
                 animator.SetBool("orange", false);
                 animator.SetBool("red", true);
             }
-            else if (GameManager.Lives == 0)
-            {
-                animator.SetBool("death", true);
-            }
 		}
 	}
+
+    private void OnPlaerDeath()
+    {
+        animator.SetBool("death", true);
+    }
 }

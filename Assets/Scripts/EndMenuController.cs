@@ -46,6 +46,11 @@ public class EndMenuController : MonoBehaviour
             GameManager.MenuEvents.ColorShift();
             colorTimer = 0;
         }
+
+        if (Input.anyKeyDown)
+        {
+            GameManager.MenuEvents.ReturnToMenu();
+        }
     }
 
     private void OnColorShift()

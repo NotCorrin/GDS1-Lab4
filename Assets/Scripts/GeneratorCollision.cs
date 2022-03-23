@@ -24,7 +24,14 @@ public class GeneratorCollision : MonoBehaviour
         if(collider2D.gameObject.CompareTag("PlayerBullet"))
         {
             GameManager.GameEvents.GeneratorHit(generator);
-            if(Forcefield) Instantiate(Shield, new Vector3(transform.position.x, Forcefield.position.y), Quaternion.identity);
+            if (Forcefield)
+            {
+                GameObject shield = Instantiate(Shield, new Vector3(transform.position.x, Forcefield.position.y), Quaternion.identity);
+                if (generator == GameManager.Generator.right)
+                {
+                    shield.GetComponent<ShieldController>().moveSpeed = -5;
+                }
+            }
         }
     }
 }

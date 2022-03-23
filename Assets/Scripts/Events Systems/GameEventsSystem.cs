@@ -14,13 +14,12 @@ public class GameEventsSystem : MonoBehaviour
         }
     }
 
-
-    public event Action onGameStart;
-    public void GameStart()
+    public event Action onGameWin;
+    public void GameWin()
     {
-        if (onGameStart != null)
+        if (onGameWin != null)
         {
-            onGameStart();
+            onGameWin();
         }
     }
 

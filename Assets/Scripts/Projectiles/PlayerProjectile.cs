@@ -32,7 +32,7 @@ public class PlayerProjectile : MonoBehaviour
     {
         // Checks whether or not we can move the bullet
         // Otherwise just move forward
-		if (pc.controllBullet == false) {
+		if (pc.controllBullet == false && GameManager.CurrentPlayerState == GameManager.PlayerState.normal) {
             movement = Vector2.zero;
             return;
         }
