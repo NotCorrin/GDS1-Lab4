@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 792988507}
   - component: {fileID: 792988506}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: barrier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1488614786}
   - component: {fileID: 1488614785}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: barrier (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -264,6 +264,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Generator (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7111447924397995801, guid: 9c618767f4345da47a06ec193371eb7e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 7111447924397995803, guid: 9c618767f4345da47a06ec193371eb7e, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -308,6 +312,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7111447925255082861, guid: 9c618767f4345da47a06ec193371eb7e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c618767f4345da47a06ec193371eb7e, type: 3}
 --- !u!4 &1364618804136445220 stripped
@@ -334,6 +342,10 @@ PrefabInstance:
     - target: {fileID: 7111447924397995801, guid: 9c618767f4345da47a06ec193371eb7e, type: 3}
       propertyPath: m_Name
       value: Generator (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111447924397995801, guid: 9c618767f4345da47a06ec193371eb7e, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7111447924397995801, guid: 9c618767f4345da47a06ec193371eb7e, type: 3}
       propertyPath: m_IsActive
@@ -383,6 +395,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7111447925255082861, guid: 9c618767f4345da47a06ec193371eb7e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c618767f4345da47a06ec193371eb7e, type: 3}
 --- !u!4 &1364618804762783411 stripped
@@ -409,6 +425,10 @@ PrefabInstance:
     - target: {fileID: 7111447924397995801, guid: 9c618767f4345da47a06ec193371eb7e, type: 3}
       propertyPath: m_Name
       value: Generator
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111447924397995801, guid: 9c618767f4345da47a06ec193371eb7e, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7111447924397995803, guid: 9c618767f4345da47a06ec193371eb7e, type: 3}
       propertyPath: m_RootOrder
@@ -453,6 +473,10 @@ PrefabInstance:
     - target: {fileID: 7111447924397995803, guid: 9c618767f4345da47a06ec193371eb7e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111447925255082861, guid: 9c618767f4345da47a06ec193371eb7e, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c618767f4345da47a06ec193371eb7e, type: 3}
