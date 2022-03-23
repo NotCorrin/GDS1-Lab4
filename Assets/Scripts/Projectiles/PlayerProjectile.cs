@@ -64,13 +64,13 @@ public class PlayerProjectile : MonoBehaviour
     {
         animator.SetBool("reload", true);
 
-        yield return new WaitForSeconds(0.2f);
-
-        animator.SetBool("reload", false);
-
         AudioManager.instance.Play("PlayerBulletImpact");
         pc.isBulletAlive = false;
         pc.controllBullet = false;
+        transform.GetComponentInChildren<SpriteRenderer>().sprite = null;
+        yield return new WaitForSeconds(0.2f);
+
+        animator.SetBool("reload", false);
         Destroy(gameObject);
     }
 }
