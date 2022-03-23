@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public enum GameState { menu, playing };
     public enum Generator { left, centre, right};
-    public enum PowerUpType { antiwall, invul, speed, gunup };
+    public enum PowerUpType { antiwall, speed, invul, gunup };
     public enum PlayerState { normal, dead }
 
     // Powerups bools
@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     }
 
     static private float invulTimer;
-    [SerializeField] static private float invulDuration;
+    static private float invulDuration = 3;
 
     static private bool isAntiWall;
     static public bool IsAntiWall
@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
     }
 
     static private float speedTimer;
-    [SerializeField] static private float speedDuration;
+    static private float speedDuration = 3;
 
     static private bool isGunUp;
     static public bool IsGunUp
@@ -58,13 +58,13 @@ public class GameManager : MonoBehaviour
     }
 
     static private float gunUpTimer;
-    [SerializeField] static private float gunUpDuration;
+    static private float gunUpDuration = 3;
 
     static public GameEventsSystem GameEvents = new GameEventsSystem();
     static public MenuEventsSystem MenuEvents = new MenuEventsSystem();
     static public ScoreEventsSystem ScoreEvents = new ScoreEventsSystem();
 
-    static private GameState currentGameState;
+    static private GameState currentGameState = GameState.menu;
     static public GameState CurrentGameState
     {
         get => currentGameState;
@@ -74,13 +74,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    static private PlayerState currentPlayerState;
+    static private PlayerState currentPlayerState = PlayerState.normal;
     static public PlayerState CurrentPlayerState
     {
-        get => CurrentPlayerState;
+        get => currentPlayerState;
         private set
         {
-            CurrentPlayerState = value;
+            currentPlayerState = value;
         }
     }
 
@@ -96,7 +96,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    [SerializeField] static private int leftGeneratorMaxHits;
+    static private int leftGeneratorMaxHits = 20;
     static public int LeftGeneratorMaxHits
     {
         get => leftGeneratorMaxHits;
@@ -113,7 +113,7 @@ public class GameManager : MonoBehaviour
     }
 
 
-    [SerializeField] static private int rightGeneratorMaxHits;
+    static private int rightGeneratorMaxHits = 20;
     static public int RightGeneratorMaxHits
     {
         get => rightGeneratorMaxHits;
@@ -129,7 +129,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    [SerializeField] static private int centreGeneratorMaxHits;
+    static private int centreGeneratorMaxHits = 20;
     static public int CentreGeneratorMaxHits
     {
         get => centreGeneratorMaxHits;
@@ -218,17 +218,18 @@ public class GameManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        UnsubscribeListeners();
+        //UnsubscribeListeners();
     }
 
     private void SubscribeListeners()
     {
+        Debug.Log("subscribe");
         GameEvents.onPlayerHit += OnPlayerHit;
         GameEvents.onGeneratorHit += OnGeneratorHit;
         GameEvents.onGeneratorDestroyed += OnGeneratorDestoryed;
         GameEvents.onPickupEnd += OnPickupEnd;
         GameEvents.onGetPickup += OnPickupGet;
-        GameEvents.onGameStart += OnGameStart;
+        MenuEvents.onGameStarted += OnGameStart;
         GameEvents.onGameOver += OnGameOver;
         GameEvents.onTopWallShrink += OnTopWallShrink;
         GameEvents.onPlayerDeath += OnPlayerDeath;
@@ -236,12 +237,13 @@ public class GameManager : MonoBehaviour
 
     private void UnsubscribeListeners()
     {
+        Debug.Log("unsubscribe");
         GameEvents.onPlayerHit -= OnPlayerHit;
         GameEvents.onGeneratorHit -= OnGeneratorHit;
         GameEvents.onGeneratorDestroyed -= OnGeneratorDestoryed;
         GameEvents.onPickupEnd -= OnPickupEnd;
         GameEvents.onGetPickup -= OnPickupGet;
-        GameEvents.onGameStart -= OnGameStart;
+        MenuEvents.onGameStarted -= OnGameStart;
         GameEvents.onGameOver -= OnGameOver;
         GameEvents.onTopWallShrink -= OnTopWallShrink;
         GameEvents.onPlayerDeath -= OnPlayerDeath;
@@ -276,7 +278,7 @@ public class GameManager : MonoBehaviour
 
 
             //Not entirely sure if += works properly here
-            if (LeftGeneratorHits < LeftGeneratorMaxHits && RightGeneratorHits < RightGeneratorMaxHits)
+            if (LeftGeneratorHits < LeftGeneratorMaxHits || RightGeneratorHits < RightGeneratorMaxHits)
             {
                 if ((borderTimer += Time.deltaTime) >= 15)
                 {
@@ -290,7 +292,7 @@ public class GameManager : MonoBehaviour
                 if ((borderTimer += Time.deltaTime) >= 2)
                 {
                     BottomBorderMoveCount++;
-                    GameEvents.TopWallShrink();
+                    GameEvents.BottomWallShrink();
                     borderTimer = 0;
                 }
             }
@@ -325,13 +327,16 @@ public class GameManager : MonoBehaviour
         Score = 0;
         livesTimer = 0;
         deathTimer = 0;
-        Lives = 4;
+        Lives = 6;
         borderTimer = 0;
         TopBorderMoveCount = 0;
         BottomBorderMoveCount = 0;
-        LeftGeneratorHits = 0;
-        RightGeneratorHits = 0;
-        CentreGeneratorHits = 0;
+        LeftGeneratorHits = 16;
+        RightGeneratorHits = 16;
+        CentreGeneratorHits = 16;
+        CurrentPlayerState = PlayerState.normal;
+        CurrentGameState = GameState.playing;
+        Debug.Log("test");
     }
 
     private void OnGameOver()
@@ -340,6 +345,8 @@ public class GameManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("HighScore", Score);
         }
+
+        CurrentGameState = GameState.menu; ;
     }
 
     private void OnPlayerHit()
@@ -367,7 +374,7 @@ public class GameManager : MonoBehaviour
         switch (powerup)
         {
             case PowerUpType.antiwall:
-                IsAntiWall = true;
+                IsAntiWall = false;
                 break;
             case PowerUpType.invul:
                 IsInvul = false;
@@ -387,18 +394,22 @@ public class GameManager : MonoBehaviour
         {
             case PowerUpType.antiwall:
                 IsAntiWall = true;
+                Debug.Log("antiwall");
                 break;
             case PowerUpType.invul:
                 IsInvul = true;
                 gunUpTimer = 0;
+                Debug.Log("invul");
                 break;
             case PowerUpType.speed:
                 IsSpeedUp = true;
                 speedTimer = 0;
+                Debug.Log("speed");
                 break;
             case PowerUpType.gunup:
                 IsGunUp = true;
                 gunUpTimer = 0;
+                Debug.Log("gunup");
                 break;
         }
     }

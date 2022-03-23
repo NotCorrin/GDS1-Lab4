@@ -32,6 +32,6 @@ public class LevelManager : MonoBehaviour
 
     private void SceneChangeToSampleScene()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("PlayerTestScene");
     }
 }

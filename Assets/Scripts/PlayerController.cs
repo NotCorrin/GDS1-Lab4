@@ -26,9 +26,16 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb;
 
+    private float speedMultiplier;
+
+    public Animator animator;
+
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();    
+        rb = GetComponent<Rigidbody2D>();
+        speedMultiplier = 1.0f;
+
+        animator = GetComponentInChildren<Animator>();
     }
 
     void Update()
@@ -51,11 +58,18 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Jump") && isBulletAlive == false) {
             Shoot();
 		  }
+
+        if (GameManager.IsSpeedUp)
+        {
+            speedMultiplier = 1.2f;
+        }
+        else speedMultiplier = 1.0f;
+
     }
 
 	private void FixedUpdate() {
         // Move the ship
-        rb.MovePosition(rb.position + new Vector2(movement.x * moveSpeedX, movement.y * moveSpeedY) * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + new Vector2(movement.x * moveSpeedX * speedMultiplier, movement.y * moveSpeedY * speedMultiplier) * Time.fixedDeltaTime);
 	}
 
   private void Shoot() {
@@ -72,15 +86,40 @@ public class PlayerController : MonoBehaviour
 
 	private void OnCollisionEnter2D(Collision2D collision) {
 		//Check for border
-        if(collision.transform.tag == "Border") {
+        if(collision.transform.CompareTag("Border")) {
             // Tell the gamemanager
             // Die
             GameManager.GameEvents.PlayerDeath();
 		}
 
 		//Check for enemy bullet
-        if(collision.transform.tag == "EnemyBullet") {
+        if(collision.transform.CompareTag("EnemyBullet")) {
             GameManager.GameEvents.PlayerHit();
+
+            if (GameManager.Lives == 5)
+            {
+                animator.SetBool("green", false);
+                animator.SetBool("blue", true);
+            }
+            else if (GameManager.Lives == 4 || GameManager.Lives == 3)
+            {
+                animator.SetBool("blue", false);
+                animator.SetBool("yellow", true);
+            }
+            else if (GameManager.Lives == 2)
+            {
+                animator.SetBool("yellow", false);
+                animator.SetBool("orange", true);
+            }
+            else if (GameManager.Lives == 1)
+            {
+                animator.SetBool("orange", false);
+                animator.SetBool("red", true);
+            }
+            else if (GameManager.Lives == 0)
+            {
+                animator.SetBool("death", true);
+            }
 		}
 	}
 }
