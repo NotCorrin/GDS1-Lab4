@@ -7,7 +7,6 @@ public class PickupSpawner : MonoBehaviour
     private float Timer;
     private float PickupSpawnTime;
 
-    public GameObject spawnArea;
     public GameObject pickup;
     private BoxCollider2D polygonCollider;
 
@@ -15,7 +14,7 @@ public class PickupSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        polygonCollider = spawnArea.GetComponent<BoxCollider2D>();
+        polygonCollider = GetComponent<BoxCollider2D>();
         PickupSpawnTime = Random.Range(1, 3);
     }
 
