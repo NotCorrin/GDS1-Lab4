@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
     static public MenuEventsSystem MenuEvents = new MenuEventsSystem();
     static public ScoreEventsSystem ScoreEvents = new ScoreEventsSystem();
 
-    static private GameState currentGameState;
+    static private GameState currentGameState = GameState.menu;
     static public GameState CurrentGameState
     {
         get => currentGameState;
@@ -332,6 +332,8 @@ public class GameManager : MonoBehaviour
         LeftGeneratorHits = 0;
         RightGeneratorHits = 0;
         CentreGeneratorHits = 0;
+        CurrentPlayerState = PlayerState.normal;
+        CurrentGameState = GameState.playing;
     }
 
     private void OnGameOver()
@@ -340,6 +342,8 @@ public class GameManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("HighScore", Score);
         }
+
+        CurrentGameState = GameState.menu; ;
     }
 
     private void OnPlayerHit()
