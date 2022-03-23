@@ -33,6 +33,8 @@ public class EndMenuController : MonoBehaviour
             Debug.LogError("No score object found!");
         }
 
+        score.text = GameManager.Score.ToString();
+
         GameManager.MenuEvents.ColorShift();
     }
 
