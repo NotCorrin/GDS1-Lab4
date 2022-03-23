@@ -24,7 +24,15 @@ public class BulletController : MonoBehaviour
     void Update()
     {
         float _homing = Mathf.Sign(transform.position.x - player.position.x);
-        transform.position += new Vector3(_homing * -homingSpeed, -fallSpeed) * Time.deltaTime;
+        if(Mathf.Abs(transform.position.x - player.position.x) < homingSpeed * Time.deltaTime) 
+        {
+            transform.position = new Vector3(player.position.x, transform.position.y);
+            transform.position += new Vector3(0, -fallSpeed) * Time.deltaTime;
+        }
+        else
+        {
+            transform.position += new Vector3(_homing * -homingSpeed, -fallSpeed) * Time.deltaTime;
+        }
     }
     
     void LateUpdate()
@@ -36,13 +44,13 @@ public class BulletController : MonoBehaviour
     {
         if(otherTag == "Player")
         {
-            GameManager.GameEvents.PlayerHit();
+            //GameManager.GameEvents.PlayerHit();
             Destroy(gameObject);
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnCollisionEnter2D(Collision2D other)
     {
-        UpdateScores(other.tag);
+        UpdateScores(other.gameObject.tag);
     }
 }
