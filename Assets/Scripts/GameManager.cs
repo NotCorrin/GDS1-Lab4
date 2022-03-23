@@ -351,6 +351,7 @@ public class GameManager : MonoBehaviour
 
     private void OnPlayerHit()
     {
+        AudioManager.instance.Play("PlayerBulletImpact");
         livesTimer = 0;
 
         if (Lives == 0)
@@ -366,6 +367,7 @@ public class GameManager : MonoBehaviour
 
     private void OnPlayerDeath()
     {
+        AudioManager.instance.Play("PlayerExplode");
         CurrentPlayerState = PlayerState.dead;
     }
 
@@ -421,9 +423,9 @@ public class GameManager : MonoBehaviour
 
     private void OnGeneratorHit( Generator generator )
     {
+        AudioManager.instance.Play("GeneratorHit");
 
-
-        switch(generator)
+        switch (generator)
         {
             case Generator.left:
                 LeftGeneratorHits++;
@@ -452,6 +454,7 @@ public class GameManager : MonoBehaviour
 
     private void OnGeneratorDestoryed(Generator generator)
     {
+        AudioManager.instance.Play("GeneratorExplode");
         switch (generator)
         {
             case Generator.left:

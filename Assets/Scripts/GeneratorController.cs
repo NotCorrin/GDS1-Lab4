@@ -59,6 +59,7 @@ public class GeneratorController : MonoBehaviour
         counter += Time.deltaTime;
         if(counter >= emitSpeed)
         {
+            AudioManager.instance.Play("GeneratorShoot");
             Instantiate(Bullet, Emitter[GeneratorToShoot].position, Emitter[GeneratorToShoot].rotation);
             counter = 0;
         }
