@@ -58,6 +58,17 @@ public class MenuController : MonoBehaviour
             GameManager.MenuEvents.ColorShift();
             colorTimer = 0;
         }
+
+        if (Input.anyKeyDown)
+        {
+            ship.SetTrigger("StartGame");
+        }
+
+        // Check if animation has finished playing
+        if (ship.GetCurrentAnimatorStateInfo(0).IsName("Player_Move"))
+        {
+            GameManager.MenuEvents.GameStart();
+        }
     }
 
     private void OnColorShift()
