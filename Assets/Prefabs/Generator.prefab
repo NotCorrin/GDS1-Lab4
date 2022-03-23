@@ -10,11 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 7111447924397995803}
   - component: {fileID: 7111447924397995800}
-  - component: {fileID: 4334824027285679644}
   - component: {fileID: 1060055192}
+  - component: {fileID: 1163607071049033633}
+  - component: {fileID: 5661693109173862042}
   m_Layer: 0
   m_Name: Generator
-  m_TagString: Untagged
+  m_TagString: KillBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85,22 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4334824027285679644
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7111447924397995801}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: faaef1340a862934c88157db3e23994d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Forcefield: {fileID: 0}
-  emitSpeed: 4
-  Bullet: {fileID: 3167432853258077346, guid: 8631e797b50c40348a3aadca965a6ec3, type: 3}
-  Shield: {fileID: 7240591295372218799, guid: a0e89b1d50f902c45bc257f8189af150, type: 3}
 --- !u!95 &1060055192
 Animator:
   serializedVersion: 3
@@ -120,6 +105,46 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!61 &1163607071049033633
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7111447924397995801}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.5, y: 2.75}
+    newSize: {x: 0.16, y: 0.48}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.5, y: 2.75}
+  m_EdgeRadius: 0
+--- !u!114 &5661693109173862042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7111447924397995801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0383045fb69c964d82a98b1c783d528, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Shield: {fileID: 7240591295372218799, guid: a0e89b1d50f902c45bc257f8189af150, type: 3}
+  Forcefield: {fileID: 0}
 --- !u!1 &7111447925255082861
 GameObject:
   m_ObjectHideFlags: 0
