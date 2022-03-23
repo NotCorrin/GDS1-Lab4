@@ -48,11 +48,14 @@ public class PlayerProjectile : MonoBehaviour
         if(collision.tag == "Player") {
             return;
 		}
+
 		if (isAntiWall && collision.tag == "Shield") {
             return;
 		}
-        pc.isBulletAlive = false;
-        pc.controllBullet = false;
-        Destroy(gameObject);
+    
+    AudioManager.instance.Play("PlayerBulletImpact");
+    pc.isBulletAlive = false;
+    pc.controllBullet = false;
+    Destroy(gameObject);
 	}
 }

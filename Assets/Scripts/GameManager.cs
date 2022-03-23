@@ -201,6 +201,8 @@ public class GameManager : MonoBehaviour
 
     static private float secondTimer;
 
+    static private float deathTimer;
+
     private void OnEnable()
     {
 
@@ -229,6 +231,7 @@ public class GameManager : MonoBehaviour
         GameEvents.onGameStart += OnGameStart;
         GameEvents.onGameOver += OnGameOver;
         GameEvents.onTopWallShrink += OnTopWallShrink;
+        GameEvents.onPlayerDeath += OnPlayerDeath;
     }
 
     private void UnsubscribeListeners()
@@ -241,6 +244,7 @@ public class GameManager : MonoBehaviour
         GameEvents.onGameStart -= OnGameStart;
         GameEvents.onGameOver -= OnGameOver;
         GameEvents.onTopWallShrink -= OnTopWallShrink;
+        GameEvents.onPlayerDeath -= OnPlayerDeath;
     }
     /// <summary>
     /// Above: Setting up variables and listeners. Below: GameManager responding to and calling listeners.
@@ -263,6 +267,11 @@ public class GameManager : MonoBehaviour
                     livesTimer = 0;
                 }
 
+            }
+
+            if (CurrentPlayerState == PlayerState.dead)
+            {
+                if ((deathTimer += Time.deltaTime) >= 2) GameEvents.GameOver();
             }
 
 
@@ -315,6 +324,7 @@ public class GameManager : MonoBehaviour
     {
         Score = 0;
         livesTimer = 0;
+        deathTimer = 0;
         Lives = 4;
         borderTimer = 0;
         TopBorderMoveCount = 0;
@@ -338,13 +348,18 @@ public class GameManager : MonoBehaviour
 
         if (Lives == 0)
         {
-            GameEvents.GameOver();
+            GameEvents.PlayerDeath();
             Debug.Log("GameOver");
         }
         else
         {
             Lives--;
         }
+    }
+
+    private void OnPlayerDeath()
+    {
+        CurrentPlayerState = PlayerState.dead;
     }
 
     private void OnPickupEnd(PowerUpType powerup)
