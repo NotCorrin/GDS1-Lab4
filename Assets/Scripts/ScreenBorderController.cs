@@ -17,6 +17,5 @@ public class ScreenBorderController : MonoBehaviour
     {
         float _widthdiff = screenWidth * -Mathf.Sign(other.transform.position.x);
         other.transform.position += Vector3.right * _widthdiff;
-        Debug.Log("fuck");
     }
 }
