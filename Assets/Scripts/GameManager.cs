@@ -10,6 +10,15 @@ public class GameManager : MonoBehaviour
     public enum PlayerState { normal, dead }
 
     // Powerups bools
+    static private bool powerupExists;
+    static public bool PowerupExists
+    {
+        get => powerupExists;
+        private set
+        {
+            powerupExists = value;
+        }
+    }
 
     static private bool isInvul;
     static public bool IsInvul
@@ -387,18 +396,22 @@ public class GameManager : MonoBehaviour
         {
             case PowerUpType.antiwall:
                 IsAntiWall = true;
+                Debug.Log("antiwall");
                 break;
             case PowerUpType.invul:
                 IsInvul = true;
                 gunUpTimer = 0;
+                Debug.Log("invul");
                 break;
             case PowerUpType.speed:
                 IsSpeedUp = true;
                 speedTimer = 0;
+                Debug.Log("speed");
                 break;
             case PowerUpType.gunup:
                 IsGunUp = true;
                 gunUpTimer = 0;
+                Debug.Log("gunup");
                 break;
         }
     }

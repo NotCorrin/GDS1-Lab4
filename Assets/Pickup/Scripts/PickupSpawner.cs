@@ -8,24 +8,26 @@ public class PickupSpawner : MonoBehaviour
     private float PickupSpawnTime;
 
     public GameObject pickup;
-    private BoxCollider2D polygonCollider;
+    private BoxCollider2D zone;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        polygonCollider = GetComponent<BoxCollider2D>();
+        zone = GetComponent<BoxCollider2D>();
         PickupSpawnTime = Random.Range(1, 3);
     }
 
     // Update is called once per frame
     void Update()
     {
-        Timer += Time.deltaTime;
-
-        if (Timer > PickupSpawnTime /*&& !PickupExists*/)
+        if (GameObject.Find("Pickup(Clone)") == null /*player isnt powered up*/)
         {
-            Debug.Log("Spawned");
+            Timer += Time.deltaTime;
+        }
+
+        if (Timer > PickupSpawnTime)
+        {
             Timer = 0;
             PickupSpawnTime = Random.Range(1, 3);
             Spawn();
@@ -34,8 +36,8 @@ public class PickupSpawner : MonoBehaviour
 
     void Spawn()
     {
-        Vector2 rndPoint2D = RandomPointInBounds(polygonCollider.bounds, 1f);
-        Vector2 rndPointInside = polygonCollider.ClosestPoint(new Vector2(rndPoint2D.x, rndPoint2D.y));
+        Vector2 rndPoint2D = RandomPointInBounds(zone.bounds, 1f);
+        Vector2 rndPointInside = zone.ClosestPoint(new Vector2(rndPoint2D.x, rndPoint2D.y));
         if (rndPointInside.x == rndPoint2D.x && rndPointInside.y == rndPoint2D.y)
         {
             Instantiate(pickup, rndPointInside, Quaternion.identity);
