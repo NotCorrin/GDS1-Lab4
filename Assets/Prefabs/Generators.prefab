@@ -257,6 +257,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5661693109173862042, guid: 9c618767f4345da47a06ec193371eb7e, type: 3}
+      propertyPath: generator
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5661693109173862042, guid: 9c618767f4345da47a06ec193371eb7e, type: 3}
       propertyPath: Forcefield
       value: 
       objectReference: {fileID: 1488614786}
@@ -338,6 +342,10 @@ PrefabInstance:
     - target: {fileID: 4334824027285679644, guid: 9c618767f4345da47a06ec193371eb7e, type: 3}
       propertyPath: Forcefield
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5661693109173862042, guid: 9c618767f4345da47a06ec193371eb7e, type: 3}
+      propertyPath: generator
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7111447924397995801, guid: 9c618767f4345da47a06ec193371eb7e, type: 3}
       propertyPath: m_Name
