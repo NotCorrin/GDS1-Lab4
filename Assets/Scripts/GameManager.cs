@@ -11,8 +11,8 @@ public class GameManager : MonoBehaviour
 
     // Powerups bools
 
-    private bool isInvul;
-    public bool IsInvul
+    static private bool isInvul;
+    static public bool IsInvul
     {
         get => isInvul;
         private set
@@ -21,11 +21,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private float invulTimer;
-    [SerializeField] private float invulDuration;
+    static private float invulTimer;
+    [SerializeField] static private float invulDuration;
 
-    private bool isAntiWall;
-    public bool IsAntiWall
+    static private bool isAntiWall;
+    static public bool IsAntiWall
     {
         get => isAntiWall;
         private set
@@ -34,8 +34,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private bool isSpeedUp;
-    public bool IsSpeedUp
+    static private bool isSpeedUp;
+    static public bool IsSpeedUp
     {
         get => isSpeedUp;
         private set
@@ -44,11 +44,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private float speedTimer;
-    [SerializeField] private float speedDuration;
+    static private float speedTimer;
+    [SerializeField] static private float speedDuration;
 
-    private bool isGunUp;
-    public bool IsGunUp
+    static private bool isGunUp;
+    static public bool IsGunUp
     {
         get => isGunUp;
         private set
@@ -57,15 +57,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private float gunUpTimer;
-    [SerializeField] private float gunUpDuration;
+    static private float gunUpTimer;
+    [SerializeField] static private float gunUpDuration;
 
     static public GameEventsSystem GameEvents = new GameEventsSystem();
     static public MenuEventsSystem MenuEvents = new MenuEventsSystem();
     static public ScoreEventsSystem ScoreEvents = new ScoreEventsSystem();
 
-    private GameState currentGameState;
-    public GameState CurrentGameState
+    static private GameState currentGameState;
+    static public GameState CurrentGameState
     {
         get => currentGameState;
         private set
@@ -74,8 +74,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private PlayerState currentPlayerState;
-    public PlayerState CurrentPlayerState
+    static private PlayerState currentPlayerState;
+    static public PlayerState CurrentPlayerState
     {
         get => CurrentPlayerState;
         private set
@@ -86,8 +86,8 @@ public class GameManager : MonoBehaviour
 
     // Counting hits to generator
 
-    private int leftGeneratorHits;
-    public int LeftGeneratorHits
+    static private int leftGeneratorHits;
+    static public int LeftGeneratorHits
     {
         get => leftGeneratorHits;
         private set
@@ -96,14 +96,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    [SerializeField] private int leftGeneratorMaxHits;
-    public int LeftGeneratorMaxHits
+    [SerializeField] static private int leftGeneratorMaxHits;
+    static public int LeftGeneratorMaxHits
     {
         get => leftGeneratorMaxHits;
     }
 
-    private int rightGeneratorHits;
-    public int RightGeneratorHits
+    static private int rightGeneratorHits;
+    static public int RightGeneratorHits
     {
         get => rightGeneratorHits;
         private set
@@ -113,14 +113,14 @@ public class GameManager : MonoBehaviour
     }
 
 
-    [SerializeField] private int rightGeneratorMaxHits;
-    public int RightGeneratorMaxHits
+    [SerializeField] static private int rightGeneratorMaxHits;
+    static public int RightGeneratorMaxHits
     {
         get => rightGeneratorMaxHits;
     }
 
-    private int centreGeneratorHits;
-    public int CentreGeneratorHits
+    static private int centreGeneratorHits;
+    static public int CentreGeneratorHits
     {
         get => centreGeneratorHits;
         private set
@@ -129,14 +129,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    [SerializeField] private int centreGeneratorMaxHits;
-    public int CentreGeneratorMaxHits
+    [SerializeField] static private int centreGeneratorMaxHits;
+    static public int CentreGeneratorMaxHits
     {
         get => centreGeneratorMaxHits;
     }
 
-    private int score;
-    public int Score
+    static private int score;
+    static public int Score
     {
         get => score;
         private set
@@ -146,8 +146,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private int highScore;
-    public int HighScore
+    static private int highScore;
+    static public int HighScore
     {
         get => highScore;
         private set
@@ -156,8 +156,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private int lives;
-    public int Lives
+    static private int lives;
+    static public int Lives
     {
         get => lives;
         private set
@@ -166,10 +166,11 @@ public class GameManager : MonoBehaviour
             ScoreEvents.LivesChanged();
         }
     }
-    private float borderTimer;
 
-    private int topBorderMoveCount;
-    public int TopBorderMoveCount
+    static private float borderTimer;
+
+    static private int topBorderMoveCount;
+    static public int TopBorderMoveCount
     {
         get => topBorderMoveCount;
         private set
@@ -178,8 +179,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private int bottomBorderMoveCount;
-    public int BottomBorderMoveCount
+    static private int bottomBorderMoveCount;
+    static public int BottomBorderMoveCount
     {
         get => bottomBorderMoveCount;
         private set
@@ -188,9 +189,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private float livesTimer;
+    static private float livesTimer;
 
-    private void Awake()
+    static private void Awake()
     {
         if (PlayerPrefs.HasKey("HighScore"))
         {
@@ -198,7 +199,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private float secondTimer;
+    static private float secondTimer;
+
+    static private float deathTimer;
 
     private void OnEnable()
     {
@@ -228,6 +231,7 @@ public class GameManager : MonoBehaviour
         GameEvents.onGameStart += OnGameStart;
         GameEvents.onGameOver += OnGameOver;
         GameEvents.onTopWallShrink += OnTopWallShrink;
+        GameEvents.onPlayerDeath += OnPlayerDeath;
     }
 
     private void UnsubscribeListeners()
@@ -240,6 +244,7 @@ public class GameManager : MonoBehaviour
         GameEvents.onGameStart -= OnGameStart;
         GameEvents.onGameOver -= OnGameOver;
         GameEvents.onTopWallShrink -= OnTopWallShrink;
+        GameEvents.onPlayerDeath -= OnPlayerDeath;
     }
     /// <summary>
     /// Above: Setting up variables and listeners. Below: GameManager responding to and calling listeners.
@@ -262,6 +267,11 @@ public class GameManager : MonoBehaviour
                     livesTimer = 0;
                 }
 
+            }
+
+            if (CurrentPlayerState == PlayerState.dead)
+            {
+                if ((deathTimer += Time.deltaTime) >= 2) GameEvents.GameOver();
             }
 
 
@@ -314,6 +324,7 @@ public class GameManager : MonoBehaviour
     {
         Score = 0;
         livesTimer = 0;
+        deathTimer = 0;
         Lives = 4;
         borderTimer = 0;
         TopBorderMoveCount = 0;
@@ -337,13 +348,18 @@ public class GameManager : MonoBehaviour
 
         if (Lives == 0)
         {
-            GameEvents.GameOver();
+            GameEvents.PlayerDeath();
             Debug.Log("GameOver");
         }
         else
         {
             Lives--;
         }
+    }
+
+    private void OnPlayerDeath()
+    {
+        CurrentPlayerState = PlayerState.dead;
     }
 
     private void OnPickupEnd(PowerUpType powerup)

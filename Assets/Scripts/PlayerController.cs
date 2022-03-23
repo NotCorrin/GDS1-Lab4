@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
         // Shoot a bullet
         if (Input.GetButtonDown("Jump") && isBulletAlive == false) {
             Shoot();
-		}
+		  }
     }
 
 	private void FixedUpdate() {
@@ -58,21 +58,29 @@ public class PlayerController : MonoBehaviour
         rb.MovePosition(rb.position + new Vector2(movement.x * moveSpeedX, movement.y * moveSpeedY) * Time.fixedDeltaTime);
 	}
 
-    private void Shoot() {
-        // Spawn a bullet and let everyone know about it
-        isBulletAlive = true;
-        Instantiate(bullet, bulletSpawnpoint.position, Quaternion.identity);
-	}
+  private void Shoot() {
+      // Spawn a bullet and let everyone know about it
+      isBulletAlive = true;
+
+      AudioManager.instance.Play("PlayerShoot");
+      GameObject bulletGO = Instantiate(bullet, bulletSpawnpoint.position, Quaternion.identity);
+      if (GameManager.IsAntiWall) {
+          bulletGO.GetComponent<PlayerProjectile>().isAntiWall = true;
+          GameManager.GameEvents.PickupEnd(GameManager.PowerUpType.antiwall);
+      }
+  }
 
 	private void OnCollisionEnter2D(Collision2D collision) {
 		//Check for border
         if(collision.transform.tag == "Border") {
             // Tell the gamemanager
             // Die
+            GameManager.GameEvents.PlayerDeath();
 		}
 
 		//Check for enemy bullet
-
-        
+        if(collision.transform.tag == "EnemyBullet") {
+            GameManager.GameEvents.PlayerHit();
+		}
 	}
 }

@@ -1,0 +1,109 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2291757943128772863
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2291757943128772861}
+  - component: {fileID: 2291757943128772862}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2291757943128772861
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2291757943128772863}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2291757943128772862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2291757943128772863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 953480c70f681f949b135e1faf878cf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: BackgroundHum
+    clip: {fileID: 8300000, guid: 7b4f98565c2111a4dad1f2f417e71519, type: 3}
+    volume: 0.25
+    pitch: 1
+    loop: 1
+    playOnAwake: 1
+    source: {fileID: 0}
+  - name: GeneratorExplode
+    clip: {fileID: 8300000, guid: edaacc71726d70e4386e72afde6f150b, type: 3}
+    volume: 0.35
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: GeneratorHit
+    clip: {fileID: 8300000, guid: 02c3c4c601514a740bdeb21b7eb86193, type: 3}
+    volume: 0.35
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: GeneratorShoot
+    clip: {fileID: 8300000, guid: 6904fc5c8b93fb141bb029c41017ef83, type: 3}
+    volume: 0.35
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: PickupCollect
+    clip: {fileID: 8300000, guid: 2423fc99b6c3fc346b622469263fb514, type: 3}
+    volume: 0.35
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: PickupSpawn
+    clip: {fileID: 8300000, guid: e11aee3a8b5ff72418a5e8e76ac14136, type: 3}
+    volume: 0.35
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: PlayerBulletImpact
+    clip: {fileID: 8300000, guid: edaacc71726d70e4386e72afde6f150b, type: 3}
+    volume: 0.35
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: PlayerExplode
+    clip: {fileID: 8300000, guid: bc741a0ed32cd3443bd02bdb304c6151, type: 3}
+    volume: 0.35
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: PlayerShoot
+    clip: {fileID: 8300000, guid: fa3cea50056d5614d8d557b59ee8cd4f, type: 3}
+    volume: 0.35
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
