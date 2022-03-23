@@ -26,9 +26,12 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb;
 
+    private float speedMultiplier;
+
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();    
+        rb = GetComponent<Rigidbody2D>();
+        speedMultiplier = 1.0f;
     }
 
     void Update()
@@ -51,11 +54,18 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Jump") && isBulletAlive == false) {
             Shoot();
 		  }
+
+        if (GameManager.IsSpeedUp)
+        {
+            speedMultiplier = 1.2f;
+        }
+        else speedMultiplier = 1.0f;
+
     }
 
 	private void FixedUpdate() {
         // Move the ship
-        rb.MovePosition(rb.position + new Vector2(movement.x * moveSpeedX, movement.y * moveSpeedY) * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + new Vector2(movement.x * moveSpeedX * speedMultiplier, movement.y * moveSpeedY * speedMultiplier) * Time.fixedDeltaTime);
 	}
 
   private void Shoot() {
