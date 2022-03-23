@@ -77,10 +77,10 @@ public class GameManager : MonoBehaviour
     static private PlayerState currentPlayerState;
     static public PlayerState CurrentPlayerState
     {
-        get => CurrentPlayerState;
+        get => currentPlayerState;
         private set
         {
-            CurrentPlayerState = value;
+            currentPlayerState = value;
         }
     }
 
@@ -237,6 +237,7 @@ public class GameManager : MonoBehaviour
 
     private void UnsubscribeListeners()
     {
+        Debug.Log("unsubscribe");
         GameEvents.onPlayerHit -= OnPlayerHit;
         GameEvents.onGeneratorHit -= OnGeneratorHit;
         GameEvents.onGeneratorDestroyed -= OnGeneratorDestoryed;
