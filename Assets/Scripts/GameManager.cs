@@ -80,7 +80,7 @@ public class GameManager : MonoBehaviour
         get => CurrentPlayerState;
         private set
         {
-            CurrentPlayerState = value;
+            currentPlayerState = value;
         }
     }
 
